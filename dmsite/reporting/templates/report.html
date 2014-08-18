@@ -1,0 +1,51 @@
+{% extends  "base.html" %}
+
+{% block site_wrapper %}
+<div id="main" >
+	<a href= "#content" class="skip_link" > Skip to main content </a>
+	<div id="banner">
+		<div class="bannerIEPadder">
+			Digital Music BI Reporting
+		</div>
+	</div>
+	<div id="navigation">
+		<div class="navIEPadder">
+			{% include "navigation.html" %}
+		</div>
+	</div>
+
+	<div id="content">
+		<a name="content"></a>
+			<div class="contentIEPadder">
+
+				<div>
+				<br>
+				<h2> {{ category_header }} </h2>
+				<br>
+				</div>
+				
+				<form action="">
+				<select name="report">
+				
+				<option value="prm_trcks">Prime added tracks</option>
+				<option value="prm_albms">Prime added albums</option>
+				<option value="prm_pllsts">Prime followed playlists</option>
+
+				</select>
+				<br><br>
+				<input type="radio" name="period" value="weekly">Weekly 
+				<input type="radio" name="period" value="monthly">Monthly
+
+				</br><br>
+				<input type="submit" value="Submit">
+				</form>
+			</div>
+		{% block content %} {% endblock %}
+	</div>
+<div id="footer">
+		<div class="footerIEPadder">
+			[footer here]
+		</div>
+	</div>
+</div>
+{% endblock %}
