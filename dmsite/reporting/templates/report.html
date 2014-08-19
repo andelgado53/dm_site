@@ -26,10 +26,9 @@
 				
 				<form action="">
 				<select name="report">
-				
-				<option value="prm_trcks">Prime added tracks</option>
-				<option value="prm_albms">Prime added albums</option>
-				<option value="prm_pllsts">Prime followed playlists</option>
+				{% for table in tables %}
+				<option value="{{ table.name }}">{{ table.description }}</option>
+				{% endfor %}
 
 				</select>
 				<br><br>

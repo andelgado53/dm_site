@@ -1,10 +1,13 @@
 
 <ul>
-
-	<li><a href="/reporting/prime_music/"> Prime Music </a></li>
-	<li><a href="/reporting/store/"> Store</a></li>
+	{% for category in category_list %}
+	
+	<li><a href="/reporting/{{ category.name }}/">{{ category.description }}</a></li>
+	<!-- <li><a href="/reporting/store/"> Store</a></li>
 	<li><a href="/reporting/libray/"> Library</a></li>
-	<li><a href="/reporting"> Twitter</a></li>
+	<li><a href="/reporting"> Twitter</a></li> -->
+	
+	{% endfor %}
 </ul>
 
 <div class="cb"></div>
