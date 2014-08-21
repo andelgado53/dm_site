@@ -24,7 +24,7 @@
 				<br>
 				</div>
 				
-				<form action="/reporting/results/robin">
+				<form action="/reporting/{{ category }}/results">
 				<select name="report">
 				{% for table in tables %}
 				<option value="{{ table.name }}">{{ table.description }}</option>
@@ -32,7 +32,7 @@
 
 				</select>
 				<br><br>
-				<input type="radio" name="period" value="weekly">Weekly 
+				<input type="radio" name="period" value="weekly" checked="checked">Weekly 
 				<input type="radio" name="period" value="monthly">Monthly
 
 				</br><br>

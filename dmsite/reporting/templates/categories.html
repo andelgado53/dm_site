@@ -1,5 +1,9 @@
 
+
+<div class="ex">
 <ul>
+	<h4> Categories: <h4>
+	<br>
 	{% for category in category_list %}
 	
 	<li><a href="/reporting/{{ category.name }}/">{{ category.description }}</a></li>
@@ -9,5 +13,5 @@
 	
 	{% endfor %}
 </ul>
-
+</div>
 <div class="cb"></div>

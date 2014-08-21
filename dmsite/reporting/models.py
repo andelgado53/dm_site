@@ -19,7 +19,25 @@ class Tables(models.Model):
 class prm_trcks_added(models.Model):
 
 	year = models.IntegerField()
-	month = models.IntegerField(blank=True)
-	week = models.IntegerField(blank=True)
+	month = models.IntegerField(blank=True, null=True)
+	week = models.IntegerField(blank=True,null=True)
 	prm_trcks_added = models.IntegerField()
 	customers = models.IntegerField()
+
+class prm_albms_added(models.Model):
+
+	year = models.IntegerField()
+	month = models.IntegerField(blank=True, null=True)
+	week = models.IntegerField(blank=True, null=True)
+	prm_albms_added = models.IntegerField()
+	customers = models.IntegerField()
+
+class prm_plst_added(models.Model):
+
+	year = models.IntegerField()
+	month = models.IntegerField(blank=True, null=True)
+	week = models.IntegerField(blank=True, null=True)
+	prm_plst_added = models.IntegerField()
+	customers = models.IntegerField()
+
+ 
