@@ -1,20 +1,13 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.shortcuts import render_to_response
-from reporting.models import Categories, Tables
+from django.db.models import get_model
+from reporting.models import Categories, Tables, prm_trcks_added
 
 # Create your views here.
 
 def index(request):
 
-	#return HttpResponse('this is the index of the DM reporting page')
-	# category_list = [
-	# 					'Prime', 
-	# 					'Store',
-	# 				 	'Library', 
-	# 				 	'ClickStream',
-	# 				  	'TwitterStream'
-	# 				 ] # this will be replaced for a query to the categories table
 	category_list = Categories.objects.all()
 
 	return render_to_response('index.html', {'category_list': category_list})
@@ -27,3 +20,12 @@ def report_request(request, category):
 	display_category = category.replace('_', ' ').title()
 		
 	return render_to_response('report.html', {'category_header' : display_category, 'tables': tables})
+
+def display_results(request):
+
+	table_name = request.GET['report']
+	table = get_model('reporting', table_name).objects.all()
+	return render(request, 'test.html', {'results': table} )
+	#return render_to_response('results.html',{'results': table})
+
+	

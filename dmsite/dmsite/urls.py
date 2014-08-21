@@ -13,5 +13,6 @@ urlpatterns = patterns('',
 
     #(r'^', include('reporting.urls')),
     url(r'^reporting/$', 'reporting.views.index'),
-    url(r'^reporting/(?P<category>\w+)/$', 'reporting.views.report_request')
+    url(r'^reporting/(?P<category>\w+)/$', 'reporting.views.report_request'),
+    url(r'^reporting/results/robin$', 'reporting.views.display_results'),
 )
