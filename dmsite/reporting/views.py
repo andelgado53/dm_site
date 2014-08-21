@@ -24,8 +24,9 @@ def report_request(request, category):
 def display_results(request):
 
 	table_name = request.GET['report']
+	table_desc = Tables.objects.get(name = table_name).description
 	table = get_model('reporting', table_name).objects.all()
-	return render(request, 'test.html', {'results': table} )
+	return render(request, 'results.html', {'results': table, 'table_description': table_desc} )
 	#return render_to_response('results.html',{'results': table})
 
 	
