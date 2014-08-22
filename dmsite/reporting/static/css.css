@@ -66,6 +66,7 @@ div.cart_box a{
 #footer{
 	clear: both;
 	background-color: LightBlue;
+	height: 20px;
 	color: Black;
 	text-align: center;
 }

@@ -32,9 +32,5 @@ def display_results(request):
 	return render(request, 'results.html', {'results': table, 'table_description': table_desc} )
 	
 
-def pop_table():
 
-	data= {'year':2014, 'month':6, 'week':25, 'prm_trcks_added':150, 'customers': 15}
-	a = prm_trcks_added(**data)
-	a.save()
 

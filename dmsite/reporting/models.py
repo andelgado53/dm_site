@@ -40,4 +40,34 @@ class prm_plst_added(models.Model):
 	prm_plst_added = models.IntegerField()
 	customers = models.IntegerField()
 
- 
+class gms_units(models.Model):
+	
+	year = models.IntegerField()
+	month = models.IntegerField(blank=True, null=True)
+	week = models.IntegerField(blank=True, null=True)
+	gms = models.DecimalField(decimal_places = 2, max_digits=12)
+	units = models.IntegerField()
+	customers = models.IntegerField()
+
+class vendor_gms(models.Model):
+
+	year = models.IntegerField()
+	month = models.IntegerField(blank=True, null=True)
+	week = models.IntegerField(blank=True, null=True)
+	vendor_name = models.CharField(max_length=30)
+	gms = models.DecimalField(decimal_places = 2, max_digits=12)
+	units = models.IntegerField()
+	customers = models.IntegerField()
+
+class avg_strmg_hrs(models.Model):
+
+	year = models.IntegerField()
+	month = models.IntegerField(blank=True, null=True)
+	week = models.IntegerField(blank=True, null=True)
+	avg_strmg_hrs = models.DecimalField(decimal_places = 2, max_digits=4)
+
+
+
+
+
+
