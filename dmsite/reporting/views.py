@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from django.shortcuts import render_to_response, get_object_or_404, get_list_or_404
 from django.db.models import get_model
 from reporting.models import Categories, Tables, prm_trcks_added
+import tweet_stream
 
 # Create your views here.
 
@@ -31,6 +32,12 @@ def display_results(request):
 		table = get_model('reporting', table_name).objects.filter(week__isnull=True)
 	return render(request, 'results.html', {'results': table, 'table_description': table_desc} )
 	
+def twit_stream(request):
+
+	twits = tweet_stream.get_twits(100, 'amazon prime music')
+	list_of_twits = [t['twit_text'].decode('utf-8') + ':\t\t\ttwitted by: '+ t['user']['user_name'] + '\t\t\t at: ' + t['date_created'] for t in twits]
+	#list_of_twits = ['alg', 'del']
+	return render_to_response('twit.html', {'list_of_twits': list_of_twits})
 
 
 
