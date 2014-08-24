@@ -42,10 +42,7 @@ def insert_data(file_path, dbname, table_name, sep = '\t', new_table = False):
 	create_columns_str = ', '.join(columns)
 	values = '?,' * len(columns)
 	values = values[0:-1]
-	print(values)
-	print(create_columns_str)
-	print(table_name)
-	print(list_of_rows)
+	
 	curs.executemany('''insert into {0}({1}) values ({2})'''.format(table_name,create_columns_str, values) , list_of_rows )
 	c.commit()
 	c.close()
@@ -111,7 +108,12 @@ list_of_files = os.listdir(DATA_FOLDER)
 
 
 for file_name in list_of_files:
-	file_path = DATA_FOLDER+'/'+file_name
-	#print('reporting_'+file_name)
-	insert_data(file_path, 'db.sqlite3', 'reporting_'+file_name)
+	try:
+		file_path = DATA_FOLDER+'/'+file_name
+		#print('reporting_'+file_name)
+
+		insert_data(file_path, 'db.sqlite3', file_name)
+	except:
+		print(file_name + 'not added')
+	#'reporting_'+
 

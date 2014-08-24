@@ -1,53 +1,44 @@
-{% extends  "base.html" %}
-
+{% extends "base.html" %}
 {% block site_wrapper %}
 <div id="main" >
-	<a href= "#content" class="skip_link" > Skip to main content </a>
-	<div id="banner">
-		<div class="bannerIEPadder">
-			Digital Music BI Reporting
-		</div>
-	</div>
-	<div id="navigation">
-		<div class="navIEPadder">
-			{% include "navigation.html" %}
-		</div>
-	</div>
-
-	<div id="content">
-		<a name="content"></a>
-			<div class="contentIEPadder">
-
-				<div>
-				<br>
-				<h2> {{ category_header }} </h2>
-				<br>
-				</div>
-				
-				<form action="/reporting/{{ category }}/results">
-				<select name="report">
-				{% for table in tables %}
-				<option value="{{ table.name }}">{{ table.description }}</option>
-				{% endfor %}
-
-				</select>
-				<br><br>
-				
-				<input type="radio" name="period" value="weekly" checked="checked">Weekly 
-				<input type="radio" name="period" value="monthly">Monthly
-				
-
-				</br><br>
-
-				<input type="submit" value="Submit">
-				</form>
-			</div>
-		{% block content %} {% endblock %}
-	</div>
+<a href= "#content" class="skip_link" > Skip to main content </a>
+<div id="banner">
+<div class="bannerIEPadder">
+Digital Music BI Reporting
+</div>
+</div>
+<div id="navigation">
+<div class="navIEPadder">
+{% include "navigation.html" %}
+</div>
+</div>
+<div id="content">
+<a name="content"></a>
+<div class="contentIEPadder">
+<div>
+<br>
+<h2> {{ category_header }} </h2>
+<br>
+</div>
+<form action="/reporting/{{ category }}/results">
+<select name="report">
+{% for table in tables %}
+<option value="{{ table.name }}">{{ table.description }}</option>
+{% endfor %}
+</select>
+<br><br>
+<input type="radio" name="period" value="weekly" checked="checked">Weekly
+<input type="radio" name="period" value="monthly">Monthly
+</br><br>
+<input type="submit" value="Submit">
+</form>
+</div>
+{% block content %} {% endblock %}
+</div>
 <div id="footer">
-		<div class="footerIEPadder">
-			[footer here]
-		</div>
-	</div>
+<div class="footerIEPadder">
+[footer here]
+</div>
+</div>
 </div>
 {% endblock %}
