@@ -12,31 +12,33 @@ def index(request, template):
 
 	category_list = Categories.objects.all()
 	#return render_to_response('index.html', {'category_list': category_list})
-	return render(request, template, {'category_list': category_list, 'page_title': page_title})
+	#locals() grabs all the varialbles and creates a dict 
+	return render(request, template, locals())
 
 def report_request(request, category, template):
 	""" use the category to search table 'tables' for for tables under that category to display in drop down menu"""
 	
+	category = category
 	tables = get_list_or_404(Tables, category= category)	
-	display_category = category.replace('_', ' ').title()	
-	return render(request, template, {'category_header' : display_category, 'tables': tables, 'category': category})
+	category_header = category.replace('_', ' ').title()	
+	return render(request, template, locals())
 
 def display_results(request, template):
-
+	
 	table_name = request.GET['report']
 	period = request.GET['period']
-	table_desc = Tables.objects.get(name = table_name).description
+	table_description = Tables.objects.get(name = table_name).description
 	if period == 'weekly':
-		table = get_model('reporting', table_name).objects.filter(week__isnull=False)
+		results = get_model('reporting', table_name).objects.filter(week__isnull=False)
 	else:
-		table = get_model('reporting', table_name).objects.filter(week__isnull=True)
-	return render(request, template, {'results': table, 'table_description': table_desc} )
+		results = get_model('reporting', table_name).objects.filter(week__isnull=True)
+	return render(request, template, locals() )
 	
 def twit_stream(request, template):
 	
 	twits = tweet_stream.get_twits(100, 'amazon prime music')
 	list_of_twits = [t['twit_text'].decode('utf-8') + ':\t\t\ttwitted by: '+ t['user']['user_name'] + '\t\t\t at: ' + t['date_created'] for t in twits]
-	return render(request, template, {'list_of_twits': list_of_twits})
+	return render(request, template, locals())
 
-
+	#{'list_of_twits': list_of_twits}
 
