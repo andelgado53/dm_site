@@ -1,14 +1,28 @@
 
+{% block categories %}
 
-<div class="ex">
+<div id="sidebar">
+		<div class="sidebarIEPadder">
+
+			<div class="ex">
 <ul>
 	<h3> Categories: <h3>
 	<br>
-	{% for category in category_list %}
+	{% for category in category_list %} 
 	
-	<li><a href="/reporting/{{ category.name }}/">{{ category.description }}</a></li>
+	<li><a href="/reporting/{{ category.name }}/">{{ category.description }}</a></li> 
+	
+	
 	
 	{% endfor %}
 </ul>
 </div>
 <div class="cb"></div>
+			
+		</div>
+	</div>
+
+
+
+{% endblock %}
+

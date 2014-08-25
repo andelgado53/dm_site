@@ -1,24 +1,9 @@
 
-{% extends "base.html" %}
+{% extends "catalog.html" %}
 
 
-{% block site_wrapper %}
-<div id="main" >
-	<a href= "#content" class="skip_link" > Skip to main content </a>
-	<div id="banner">
-		<div class="bannerIEPadder">
-			Digital Music BI Reporting
-		</div>
-	</div>
-	<div id="navigation">
-		<div class="navIEPadder">
-			{% include "navigation.html" %}
-		</div>
-	</div>
-<div id="content">
-	
-		<a name="content"></a>
-			<div class="contentIEPadder">
+{% block content %}
+
 				<h2> Twitter Stream </h2>
 				<br><br>
 
@@ -27,7 +12,6 @@
 				{{ twit }}<br><br><br>
 			    </hr>
 				{% endfor %}
-							</div> 
-				</div>
+							
 
 {% endblock %}

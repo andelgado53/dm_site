@@ -10,9 +10,9 @@ urlpatterns = patterns('',
     # url(r'^blog/', include('blog.urls')),
 
     #url(r'^admin/', include(admin.site.urls)),
-    url(r'^reporting/$', 'reporting.views.index'),
-    url(r'reporting/twitt_stream/$', 'reporting.views.twit_stream'),
-    url(r'^reporting/(?P<category>\w+)/$', 'reporting.views.report_request'),
-    url(r'^reporting/[a-z]+_?[a-z]+/results/$', 'reporting.views.display_results'),
+    url(r'^reporting/$', 'reporting.views.index',{'template': 'index.html'}),
+    url(r'reporting/twitt_stream/$', 'reporting.views.twit_stream', {'template': 'twit.html'}),
+    url(r'^reporting/(?P<category>\w+)/$', 'reporting.views.report_request', {'template': 'report.html'}),
+    url(r'^reporting/[a-z]+_?[a-z]+/results/$', 'reporting.views.display_results', {'template': 'results.html'}),
     
 )
