@@ -110,10 +110,8 @@ list_of_files = os.listdir(DATA_FOLDER)
 for file_name in list_of_files:
 	try:
 		file_path = DATA_FOLDER+'/'+file_name
-		#print('reporting_'+file_name)
-
 		insert_data(file_path, 'db.sqlite3', file_name)
 	except:
-		print(file_name + 'not added')
+		print(file_name + ' not added')
 	#'reporting_'+
 
