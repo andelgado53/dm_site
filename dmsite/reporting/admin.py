@@ -1,5 +1,5 @@
 from django.contrib import admin
-from reporting.models import Categories, Tables
+from reporting.models import Categories, Tables, gms_units, prm_plst_added
 
 # Register your models here.
 class CategoriesAdmin(admin.ModelAdmin):
@@ -19,3 +19,5 @@ class TablesAdmin(admin.ModelAdmin):
 	search_fields = ['name', 'description']	
 
 admin.site.register(Tables, TablesAdmin)
+admin.site.register(gms_units)
+admin.site.register(prm_plst_added)

@@ -20,7 +20,7 @@ def report_request(request, category, template):
 	
 	category = category
 	tables = get_list_or_404(Tables, category= category)	
-	category_header = category.replace('_', ' ').title()	
+	category_header = category.replace('_', ' ').title()
 	return render(request, template, locals())
 
 def display_results(request, template):
