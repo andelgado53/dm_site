@@ -4,6 +4,7 @@ from django.shortcuts import render_to_response, get_object_or_404, get_list_or_
 from django.db.models import get_model
 from reporting.models import Categories, Tables
 import tweet_stream
+from django.forms import Form
 
 
 # Create your views here.
@@ -13,15 +14,22 @@ def index(request, template):
 	category_list = Categories.objects.all()
 	#return render_to_response('index.html', {'category_list': category_list})
 	#locals() grabs all the varialbles and creates a dict 
+	# if request.user.is_authenticated():
+	# 	user_name = request.user
+	# else:
+	# 	user_name = None 
+
 	return render(request, template, locals())
 
 def report_request(request, category, template):
 	""" use the category to search table 'tables' for for tables under that category to display in drop down menu"""
-	
+	#if request.user.is_authenticated(): ##check to see if user is logged in 
 	category = category
 	tables = get_list_or_404(Tables, category= category)	
 	category_header = category.replace('_', ' ').title()
 	return render(request, template, locals())
+	
+
 
 def display_results(request, template):
 	
@@ -41,4 +49,9 @@ def twit_stream(request, template):
 	return render(request, template, locals())
 
 	#{'list_of_twits': list_of_twits}
+
+def log_in(request):
+	
+	errors = False
+	return render(request, 'login.html', locals())
 

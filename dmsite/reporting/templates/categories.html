@@ -1,6 +1,7 @@
 
 {% block categories %}
 
+
 <div id="sidebar">
 		<div class="sidebarIEPadder">
 
@@ -10,8 +11,9 @@
 	<br>
 	{% for category in category_list %} 
 	
-	<li><a href="/reporting/{{ category.name }}/">{{ category.description }}</a></li> 
-	
+	<li><a href="{% url 'report_request' category.name %}">{{ category.description }}</a></li> 
+		<!-- href="/reporting/{{ category.name }}/">{{ category.description }}</a></li> 
+	 -->
 	
 	
 	{% endfor %}
