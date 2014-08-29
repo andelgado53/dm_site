@@ -1,10 +1,10 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from django.shortcuts import render_to_response, get_object_or_404, get_list_or_404
+from django.shortcuts import render_to_response, get_object_or_404, get_list_or_404, redirect
 from django.db.models import get_model
 from reporting.models import Categories, Tables
 import tweet_stream
-from django.forms import Form
+from reporting.forms import LoginForm
 
 
 # Create your views here.
@@ -14,10 +14,16 @@ def index(request, template):
 	category_list = Categories.objects.all()
 	#return render_to_response('index.html', {'category_list': category_list})
 	#locals() grabs all the varialbles and creates a dict 
-	# if request.user.is_authenticated():
-	# 	user_name = request.user
+	if request.user.is_authenticated():
+		return render(request, template, locals())
+	else:
+		return redirect('login')
+	
 	# else:
 	# 	user_name = None 
+	# if 'test_id' not in request.session:
+	# 	request.session['test_id'] = '123'
+	# session_data = request.session['test_id']
 
 	return render(request, template, locals())
 
@@ -52,6 +58,7 @@ def twit_stream(request, template):
 
 def log_in(request):
 	
-	errors = False
+	#errors = False
+	form = LoginForm()
 	return render(request, 'login.html', locals())
 

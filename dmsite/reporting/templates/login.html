@@ -7,24 +7,15 @@
 <br><br>
 {% endif %}
 
-<form method="post" action="/reporting/index/">
-{% csrf_token %}
 
- <table style="width:400px">
-<tr>
-  <td>User Name:</td>
-  <td><input type="text" name="usern_name"></td>
-  
-</tr>
-<tr>
-  <td>Password:</td>
-  <td><input type="password" name="pwd"></td>
-  
-</tr>
-</table> 
+
+
+<form method="post" action="/reporting/">
+{% csrf_token %}
+{{ form.as_table}}
+<br/>
 
 <input type="submit" value="login" />
-<input type="hidden" name="next" value="{{ next }}" />
 </form>
 
 {% endblock %}
