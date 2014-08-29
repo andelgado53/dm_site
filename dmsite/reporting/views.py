@@ -14,10 +14,10 @@ def index(request, template):
 	category_list = Categories.objects.all()
 	#return render_to_response('index.html', {'category_list': category_list})
 	#locals() grabs all the varialbles and creates a dict 
-	if request.user.is_authenticated():
-		return render(request, template, locals())
-	else:
-		return redirect('login')
+	# if request.user.is_authenticated():
+	# 	return render(request, template, locals())
+	# else:
+	# 	return redirect('login')
 	
 	# else:
 	# 	user_name = None 
@@ -29,7 +29,7 @@ def index(request, template):
 
 def report_request(request, category, template):
 	""" use the category to search table 'tables' for for tables under that category to display in drop down menu"""
-	#if request.user.is_authenticated(): ##check to see if user is logged in 
+	
 	category = category
 	tables = get_list_or_404(Tables, category= category)	
 	category_header = category.replace('_', ' ').title()
