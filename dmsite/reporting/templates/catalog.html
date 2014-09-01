@@ -5,9 +5,15 @@
 <div id="main" >
 	<a href= "#content" class="skip_link" > Skip to main content </a>
 	<div id="banner">
+		<div class="user">
+			
+			{% if user_name %} Hello {{ user_name }} 
+			
+			{% endif %}
+		</div>
 		<div class="bannerIEPadder">
 			Digital Music BI Reporting
-			{% if user_name %} Hello {{ user_name }} {% endif %}
+			
 		</div>
 	</div>
 	<div id="navigation">

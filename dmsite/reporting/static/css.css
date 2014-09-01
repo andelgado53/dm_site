@@ -121,3 +121,12 @@ div.ex {
     border: 5px solid LightBlue;
     margin: 0px;
 }
+div.user {
+
+	font-size:12pt;
+	font-family:times new roman;
+	font-weight:bold;
+	font-style:italic;
+	color: White;
+	text-align: right;
+}

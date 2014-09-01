@@ -1,0 +1,19 @@
+{% extends "catalog.html" %}
+
+{% block content %}
+
+{% if errors %}
+<p><font color="Red">{{ errors }}</font></p>
+<br><br>
+{% endif %}
+
+<form method="post" action=".">
+{% csrf_token %}
+<br>
+{{ form.as_p}}
+<br/>
+
+<input type="submit" value="submit" />
+</form>
+
+{% endblock %}

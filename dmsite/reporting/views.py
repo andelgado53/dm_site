@@ -4,7 +4,8 @@ from django.shortcuts import render_to_response, get_object_or_404, get_list_or_
 from django.db.models import get_model
 from reporting.models import Categories, Tables
 import tweet_stream
-from reporting.forms import LoginForm
+from reporting.forms import RegisterForm
+from django.contrib.auth import authenticate, login
 
 
 # Create your views here.
@@ -24,6 +25,8 @@ def index(request, template):
 	# if 'test_id' not in request.session:
 	# 	request.session['test_id'] = '123'
 	# session_data = request.session['test_id']
+	print(request.user)
+	user_name = request.user
 
 	return render(request, template, locals())
 
@@ -58,7 +61,38 @@ def twit_stream(request, template):
 
 def log_in(request):
 	
-	#errors = False
-	form = LoginForm()
+	errors = False
+	if request.method == 'POST':
+		username = request.POST['username']
+		password = request.POST['password']
+		user = authenticate(username=username, password=password)
+		if user:
+			login(request, user)
+			return redirect('index')
+		else:
+			errors = True
+	
+
 	return render(request, 'login.html', locals())
+
+def register(request):
+
+	form = RegisterForm()
+	if request.method == 'POST':
+		user_form = RegisterForm(data = request.POST)
+		if user_form.is_valid():
+			new_user = user_form.save()
+			new_user.set_password(new_user.password)
+			new_user.save()
+			username = request.POST['username']
+			password = request.POST['password']
+			user = authenticate(username=username, password=password)
+			login(request,user)
+
+			return redirect('index')
+		else:
+			print user_form.errors
+			errors = user_form.errors
+	else:
+		return render(request, 'register.html', locals())
 

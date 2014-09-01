@@ -1,7 +1,16 @@
 from django import forms 
+from django.contrib.auth.models import User
 
-class LoginForm(forms.Form):
 
-	user_name = forms.CharField(widget=forms.TextInput())
-	password = forms.CharField(widget=forms.TextInput())
+class RegisterForm(forms.ModelForm):
+
+	password = forms.CharField(widget=forms.PasswordInput())
+
+	class Meta:
+		model = User
+		fields = ('email', 'username','password' )
+
+
+
+
 
