@@ -5,7 +5,7 @@ from django.db.models import get_model
 from reporting.models import Categories, Tables
 import tweet_stream
 from reporting.forms import RegisterForm
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 
 
 # Create your views here.
@@ -95,4 +95,8 @@ def register(request):
 			errors = user_form.errors
 	else:
 		return render(request, 'register.html', locals())
+
+def log_out(request):
+	logout(request)
+	return redirect('index')
 
