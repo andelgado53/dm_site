@@ -2,38 +2,17 @@
 {%  extends "catalog.html"  %}
 
 
-{% block site_wrapper %}
+
 {% load render_table from django_tables2 %}
 
-<head>
-        <!-- <link rel="stylesheet" href="{{ STATIC_URL }}django_tables2/themes/paleblue/css/screen.css" /> -->
-        <link rel="stylesheet" href="{{ STATIC_URL }}css.css" />
-</head>
-<div id="main" >
-	<a href= "#content" class="skip_link" > Skip to main content </a>
-	<div id="banner">
-		<div class="bannerIEPadder">
-			Digital Music BI Reporting
-		</div>
-	</div>
-	<div id="navigation">
-		<div class="navIEPadder">
-			{% include "navigation.html" %}
-		</div>
-	</div>
-<div id="content">
-	
-		<a name="content"></a>
-			<div class="contentIEPadder">
-				<h2> {{ table_description }} </h2>
-				<br><br>
+{% block content %} 
+<h2> {{ table_description }} </h2>
+	<br><br>
 
-				{% render_table results %}
-			</div> 
+	{% render_table results %}
+			 
 
 
-			<html>
-  
-</div>
+			
 
 {% endblock %}
