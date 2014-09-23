@@ -7,14 +7,14 @@
 	<div id="banner">
 		<div class="user">
 			
-			{% if user_name.is_authenticated %} Hello {{ user_name }}!-<a href="{% url 'log_out' %}"> logout</a>
+			{% if user.is_authenticated %} Hello {{ user }}!-<a href="{% url 'log_out' %}"> logout </a> 
 
 			{% else %} Hello user!- <a href="{% url 'log_in' %}"> login</a> or <a href="{% url 'register' %}"> register</a>
 			
 			{% endif %}
 		</div>
 		<div class="bannerIEPadder">
-			Digital Music BI Reporting
+			Digital Music BI Reporting 
 			
 		</div>
 	</div>

@@ -4,6 +4,7 @@ from django.shortcuts import render_to_response, get_object_or_404, get_list_or_
 from django.db.models import get_model
 from reporting.models import Categories, Tables
 import tweet_stream
+from django.template import RequestContext
 from reporting.forms import RegisterForm
 from django.contrib.auth import authenticate, login, logout
 
@@ -26,8 +27,10 @@ def index(request, template):
 	# 	request.session['test_id'] = '123'
 	# session_data = request.session['test_id']
 	#print(request.user)
-	user_name = request.user
+	#user_name = request.user
 
+	context_instance=RequestContext(request)
+	print(context_instance)
 	return render(request, template, locals())
 
 def report_request(request, category, template):
@@ -36,7 +39,7 @@ def report_request(request, category, template):
 	category = category
 	tables = get_list_or_404(Tables, category= category)	
 	category_header = category.replace('_', ' ').title()
-	user_name = request.user
+	
 	return render(request, template, locals())
 	
 
@@ -46,7 +49,7 @@ def display_results(request, template):
 	table_name = request.GET['report']
 	period = request.GET['period']
 	table_description = Tables.objects.get(name = table_name).description
-	user_name = request.user
+	#user_name = request.user
 	if period == 'weekly':
 		results = get_model('reporting', table_name).objects.filter(week__isnull=False)
 	else:
@@ -55,7 +58,7 @@ def display_results(request, template):
 	
 def twit_stream(request, template):
 	
-	user_name = request.user
+	#user_name = request.user
 	twits = tweet_stream.get_twits(100, 'amazon prime music')
 	list_of_twits = [t['twit_text'].decode('utf-8') + ':\t\t\ttwitted by: '+ t['user']['user_name'] + '\t\t\t at: ' + t['date_created'] for t in twits]
 	return render(request, template, locals())
@@ -102,4 +105,8 @@ def register(request):
 def log_out(request):
 	logout(request)
 	return redirect('index')
+
+def boot_test(request):
+	 return render(request, 'boot_test.html')
+
 
