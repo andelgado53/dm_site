@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="row">
+	<div class="col-md-12">	
+		<img class="img-responsive" src="https://s3.amazonaws.com/andresbucket/bi.jpg" atl="BI image"/>
+	</div>
+</div>
+<br>		
+<div class="row">
+	<div class="col-md-12 text-left text-uppercase">
+		<h2>Categories</h2>
+		<br>
+	</div>
+</div>
+<div class="row text-center ">
+	<div class="col-md-3">
+		<a href="{% url 'report_request' 'prime_music' %}">
+			<img class="img-responsive imageClip center-block"  src="https://s3.amazonaws.com/andresbucket/amazon-prime.jpg" atl="Prime Music"/>
+		</a>
+		<h3>Amazon Prime Music</h3>
+	</div>
+	<div class="col-md-3">
+		<a href="{% url 'report_request' 'store' %}">
+			<img class="img-responsive imageClip center-block"  src="https://s3.amazonaws.com/andresbucket/amzn_mp3.jpg" atl="MP3 Store"/>
+		</a>
+		<h3>Amazon MP3 Store</h3>
+	</div>
+	<div class="col-md-3">
+		<a href="{% url 'report_request' 'library' %}">
+			<img class="img-responsive imageClip center-block" src="https://s3.amazonaws.com/andresbucket/amazon_cp.jpg" atl="Cloud Player"/>
+		</a>
+		<h3>Amazon Cloud Player</h3>
+	</div>
+	<div class="col-md-3">
+		<a href="{% url 'report_request' 'twitt_stream' %}">
+			<img class="img-responsive imageClip center-block" src="https://s3.amazonaws.com/andresbucket/twitter.jpg" atl="Twitter"/>
+		</a>
+		<h3>Twitter Stream</h3>
+	</div>
+</div>
+
+{% endblock %}

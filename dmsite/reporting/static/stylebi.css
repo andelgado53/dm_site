@@ -1,0 +1,23 @@
+.img-title {
+	margin-top: 20px;
+}
+
+.imageClip{
+    width:40%;
+    height: auto;
+    overflow:hidden;
+}
+
+.headerColor {
+	background-color: white ;
+}
+
+.mainhr {
+	
+	border: 2px solid;
+}
+
+.bodyFonts {
+	font-family: 'Roboto Condensed', sans-serif;
+	font-weight: 100;
+}

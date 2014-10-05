@@ -1,27 +1,34 @@
 
-{%  extends "catalog.html"  %}
+{%  extends "base.html"  %}
 
 
 {% block content %}
-<h2> {{ category_header }} </h2>
+
+<div class="row text-center">
+	<div class="col-med-12">
+		<h1>{{ category_header }} Reports</h1>
+	</div>
+</div>
 <br>
-<form action="/reporting/{{ category }}/results">
+<div class="row">
+	<div class="col-md-12">
+		<form action="/reporting/{{ category }}/results">
 	
-	<select name="report">
+			<select name="report">
 		
-		{% for table in tables %}
-		<option value="{{ table.name }}">{{ table.description }}</option>
-		{% endfor %}
-		</select>
-		<br><br><br>
+			{% for table in tables %}
+			<option value="{{ table.name }}">{{ table.description }}</option>
+			{% endfor %}
+			</select>
+			<br><br><br>
 		
-		<input type="radio" name="period" value="weekly" checked="checked">Weekly
-		<input type="radio" name="period" value="monthly">Monthly
+			<input type="radio" name="period" value="weekly" checked="checked">Weekly
+			<input type="radio" name="period" value="monthly">Monthly
 		
-		<br><br><br>	
-		<input type="submit" value="Submit">
-
-
-</form>
+			<br><br><br>	
+			<input type="submit" value="Submit">
+		</form>
+	</div>
+</div>
 
 {% endblock %}

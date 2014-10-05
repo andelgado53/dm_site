@@ -1,5 +1,5 @@
 
-{% extends "catalog.html" %}
+{% extends "base.html" %}
 
 
 {% block content %}
@@ -8,9 +8,9 @@
 				<br><br>
 
 				{% for twit in list_of_twits %}
-				<hr>
+				<hr class="twitsephr">
 				{{ twit }}<br><br><br>
-			    </hr>
+			    
 				{% endfor %}
 							
 
