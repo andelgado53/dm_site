@@ -10,7 +10,12 @@ urlpatterns = patterns('',
     # url(r'^blog/', include('blog.urls')),
 
     #url(r'^admin/', include(admin.site.urls)),
+<<<<<<< HEAD
     url(r'^reporting/$', 'reporting.views.index',{'template': 'main.html'}, name = 'main'),
+=======
+    url(r'^reporting/boot_test/$', 'reporting.views.boot_test'),
+    url(r'^reporting/$', 'reporting.views.index',{'template': 'index.html'}, name = 'index'),
+>>>>>>> e09ac6358d7ce511954f2afee3776316e1ebde49
     url(r'^reporting/login/$', 'reporting.views.log_in', name = 'log_in'),
     url(r'^reporting/register/$', 'reporting.views.register', name = 'register'),
     url(r'^reporting/logout/$', 'reporting.views.log_out', name='log_out'),
