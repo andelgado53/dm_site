@@ -3,15 +3,32 @@
 
 
 {% block content %}
+<div class="row">
+	<div class="col-md-12 text-center">
+		<h1> Twitter Stream </h1>
+	</div>
 
-				<h1> Twitter Stream </h1>
-				<br><br>
-
-				{% for twit in list_of_twits %}
-				<hr class="twitsephr">
-				{{ twit }}<br><br><br>
+</div>
+<div class="row">
+	<div class="col-md-12" style="font-size: 25px">
+		{% for twit in list_of_twits %}
+		<hr class="twitsephr">
+			
+		{{ twit }}<br><br><br>
 			    
-				{% endfor %}
+		{% endfor %}
+
+	</div>
+
+</div>
+
+
+
+
+				
+				
+
+				
 							
 
 {% endblock %}

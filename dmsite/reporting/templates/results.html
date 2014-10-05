@@ -6,12 +6,20 @@
 {% load render_table from django_tables2 %}
 
 {% block content %} 
-<h2> {{ table_description }} </h2>
-	<br><br>
 
-	{% render_table results %}
-			 
+<div class="row">
+	<div class="col-md-12 text-center">
+		<h1> {{ table_description }} </h1>
+	</div>
 
+</div>
+<br><br>
+<div class="row">
+	<div class="col-md-12">
+		{% render_table results %}
+		<br><br>
+	</div>
+</div>	 
 
 			
 
