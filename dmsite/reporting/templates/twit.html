@@ -12,10 +12,13 @@
 <div class="row">
 	<div class="col-md-12" style="font-size: 25px">
 		{% for twit in list_of_twits %}
-		<hr class="twitsephr" alt="Twitter profile picture">
-		<img src={{ twit.1 }}>
-			
-		{{ twit.0 }}<br><br><br>
+		<hr class="twitsephr" >
+		<a href={{ twit.2 }}>
+		<img src={{ twit.1 }} alt="Twitter profile picture">
+		</a>	
+		
+		{{ twit.0 }}
+		<br><br><br>
 			    
 		{% endfor %}
 

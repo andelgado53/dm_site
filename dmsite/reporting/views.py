@@ -60,7 +60,7 @@ def twit_stream(request, template):
 	
 	#user_name = request.user
 	twits = tweet_stream.get_twits(100, 'amazon prime music')
-	list_of_twits = [(t['twit_text'].decode('utf-8') + ':\t\t\ttwitted by: '+ t['user']['user_name'] + '\t\t\t at: ' + t['date_created'], t['profile_pic']) for t in twits]
+	list_of_twits = [(t['twit_text'].decode('utf-8') + ':\t\t\ttwitted by: '+ t['user']['user_name'] + '\t\t\t at: ' + t['date_created'], t['profile_pic'], "https://twitter.com/" + t['user']['user_name']) for t in twits]
 	return render(request, template, locals())
 
 	#{'list_of_twits': list_of_twits}
