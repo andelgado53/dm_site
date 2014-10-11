@@ -85,14 +85,15 @@ def get_twits(total_needed, key_words, last = 1):
 				last_id = search_tweets[-1].id
 				for t in search_tweets:
 					tweet = { }
-					hashtags, user_name, created_at, twit, t_id, followers, following, country = get_twit_attr(t)
+					hashtags, user_name, created_at, twit, t_id, followers, following, country, profile_pic = get_twit_attr(t)
 			
 					tweet = { 
 						  	'id': t_id,
 					  		'user': { 'user_name': user_name, 'location': country, 'followers': followers, 'following': following },
 					  		'hashtags': hashtags,
 				  	  		'date_created': created_at,
-				      		'twit_text': twit
+				      		'twit_text': twit,
+				      		'profile_pic': profile_pic
 							}
 
 					tweets.append(tweet)				
@@ -147,11 +148,12 @@ def get_twit_attr(t):
 	t_id = t.id
 	followers = int(t.user.followers_count)
 	following = int(t.user.friends_count) 
+	profile_pic = t.author.profile_image_url_https
 	if t.place:
 		country = t.place.country
 	else:
 		country = None
-	return list_hashtags, user_name, created_at, twit, t_id, followers, following, country
+	return list_hashtags, user_name, created_at, twit, t_id, followers, following, country, profile_pic
 
 def get_current_id(collection):
 	current_ids = set()
